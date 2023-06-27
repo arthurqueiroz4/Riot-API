@@ -1,6 +1,5 @@
 package org.Application.Handlers;
 
-import org.Application.DTO.SummonerDTO;
 import org.Application.Requests.Match;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class HandlerMatches {
         }
         if (summonersName.size() == puuids.size()){
             for (int i=0; i < summonersName.size(); i++){
-                matches.put(summonersName.get(i), Match.getAllMatchesForSummoner(puuids.get(i)));
+                matches.put(summonersName.get(i), Match.getAllMatchesForSummoner(puuids.get(i),5));
             }
         } else {
             System.out.println("aqui fodeu");

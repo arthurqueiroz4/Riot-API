@@ -4,9 +4,6 @@ import com.google.gson.Gson;
 import org.Application.DTO.MatchDTO;
 import org.Application.Util;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.List;
 
 public class Match {
@@ -18,6 +15,10 @@ public class Match {
     private static Util util;
 
     @SuppressWarnings("rawtypes")
+    public static List getAllMatchesForSummoner(String puuid, Integer count) throws Exception {
+        var response = Connection.openConnection(urlToRequest+puuid+endRequest+util.API_KEY+"&count="+count);
+        return gson.fromJson(response, List.class);
+    }
     public static List getAllMatchesForSummoner(String puuid) throws Exception {
         var response = Connection.openConnection(urlToRequest+puuid+endRequest+util.API_KEY);
         return gson.fromJson(response, List.class);
