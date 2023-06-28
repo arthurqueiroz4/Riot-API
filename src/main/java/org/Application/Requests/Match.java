@@ -16,15 +16,18 @@ public class Match {
 
     @SuppressWarnings("rawtypes")
     public static List getAllMatchesForSummoner(String puuid, Integer count) throws Exception {
+        Thread.sleep(1000);
         var response = Connection.openConnection(urlToRequest+puuid+endRequest+util.API_KEY+"&count="+count);
         return gson.fromJson(response, List.class);
     }
     public static List getAllMatchesForSummoner(String puuid) throws Exception {
+        Thread.sleep(1000);
         var response = Connection.openConnection(urlToRequest+puuid+endRequest+util.API_KEY);
         return gson.fromJson(response, List.class);
     }
 
     public static MatchDTO getMatchInfo(String matchId) throws Exception {
+        Thread.sleep(1000);
         var response = Connection.openConnection(urlToGetMatchInfo+matchId+util.API_KEY);
         return gson.fromJson(response, MatchDTO.class);
     }

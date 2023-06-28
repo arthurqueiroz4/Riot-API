@@ -17,7 +17,11 @@ public class HandlerEntries {
         }
         return arrayLeagueEntryDTO;
     }
-
+    public LeagueEntryDTO getEntries(SummonerDTO summoner) throws Exception {
+        var x = Entry.getEntries(summoner.id());
+        System.out.println(x);
+        return Entry.getEntries(summoner.id()).get(0);
+    }
     public List<String> getOnlyRankedQueue(List<LeagueEntryDTO> arrayLeagueEntryDTO){
         List<String> jsonResponse = new ArrayList<>();
         arrayLeagueEntryDTO.forEach(entry -> {

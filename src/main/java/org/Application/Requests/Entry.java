@@ -13,10 +13,12 @@ public class Entry {
     private static Gson gson = new Gson();
 
     public static List<LeagueEntryDTO> getEntries(String summonerId) throws Exception {
+        Thread.sleep(1000);
         String json = Connection.openConnection(urlToEntries+summonerId+util.API_KEY);
         TypeToken<List<LeagueEntryDTO>> typeToken = new TypeToken<List<LeagueEntryDTO>>() {};
         return gson.fromJson(json, typeToken.getType());
-
     }
+
+
 
 }

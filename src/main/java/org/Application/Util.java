@@ -1,5 +1,5 @@
 package org.Application;
 
 public class Util {
-    public final static String API_KEY = "?api_key=RGAPI-41945665-61ec-46f5-9c53-bb0e14ae3ad0";
+    public final static String API_KEY = "?api_key=RGAPI-36a6006b-ddd8-4606-b2fc-2c16e73de8b5";
 }

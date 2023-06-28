@@ -12,6 +12,7 @@ public class Summoner {
     
     public static SummonerDTO getSummonersByName(String name) throws Exception{
         try{
+            Thread.sleep(1000);
             String json = Connection.openConnection(urlToGetSummonerByName+name+util.API_KEY);
             return gson.fromJson(json, SummonerDTO.class);
         }catch (Exception e){
@@ -24,6 +25,7 @@ public class Summoner {
 
     public static SummonerDTO getSummonerByPuuid(String puuid) throws Exception {
         try {
+            Thread.sleep(1000);
             String json = Connection.openConnection(urlToGetSummonerByPuuid + puuid + util.API_KEY);
             return gson.fromJson(json, SummonerDTO.class);
         }catch (Exception e){

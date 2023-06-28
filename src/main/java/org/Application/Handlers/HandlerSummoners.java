@@ -8,7 +8,7 @@ import java.util.List;
 
 public class HandlerSummoners {
 
-    public List<SummonerDTO> getSummonersAll(String[] nicknames) throws Exception {
+    public List<SummonerDTO> getSummonersAll(ArrayList<String> nicknames) throws Exception {
         List<SummonerDTO> summoners = new ArrayList<>();
         for (String nick : nicknames) {
             summoners.add(Summoner.getSummonersByName(nick));

@@ -18,7 +18,7 @@ public class HandlerMatches {
         }
         if (summonersName.size() == puuids.size()){
             for (int i=0; i < summonersName.size(); i++){
-                matches.put(summonersName.get(i), Match.getAllMatchesForSummoner(puuids.get(i),5));
+                matches.put(summonersName.get(i), Match.getAllMatchesForSummoner(puuids.get(i),50));
             }
         } else {
             System.out.println("aqui fodeu");
