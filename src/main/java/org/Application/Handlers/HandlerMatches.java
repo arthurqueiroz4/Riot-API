@@ -1,5 +1,7 @@
 package org.Application.Handlers;
 
+import org.Application.DTO.LeagueEntryDTO;
+import org.Application.Model.ParticipantInfo;
 import org.Application.Requests.Match;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class HandlerMatches {
         }
         if (summonersName.size() == puuids.size()){
             for (int i=0; i < summonersName.size(); i++){
-                matches.put(summonersName.get(i), Match.getAllMatchesForSummoner(puuids.get(i),50));
+                matches.put(summonersName.get(i), Match.getAllMatchesForSummoner(puuids.get(i),100));
             }
         } else {
             System.out.println("aqui fodeu");
@@ -26,5 +28,18 @@ public class HandlerMatches {
         return matches;
     }
 
+    public static boolean playerIsInMatch(LeagueEntryDTO entries, ParticipantInfo participant) {
+        return participant.getSummonerName().equalsIgnoreCase(entries.getSummonerName());
+    }
+
+    public static void setEntriesCampsInParticipant(ParticipantInfo participant, LeagueEntryDTO entries){
+        participant.setLeaguePoints(entries.getLeaguePoints());
+        participant.setRank(entries.getRank());
+        participant.setTier(entries.getTier());
+    }
+
+    public static boolean matchIsRankedSoloDuo(LeagueEntryDTO entries){
+        return entries.getQueueType().equalsIgnoreCase("RANKED_SOLO_5x5");
+    }
 
 }

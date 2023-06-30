@@ -2,11 +2,14 @@ package org.Application.Connection;
 
 import org.Application.Model.ParticipantInfo;
 
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
-public class Connection {
+public class ConnectionDB {
     private static String url = "jdbc:postgresql://localhost:5432/riot-api";
     private static String user = "postgres";
     private static String password = "admin";
@@ -15,7 +18,7 @@ public class Connection {
         conectar();
     }
 
-    public Connection() {
+    public ConnectionDB() {
         conectar();
     }
 
@@ -40,8 +43,8 @@ public class Connection {
                 "deaths, win, champLevel, championName, lane, role, doubleKills, tripleKills," +
                 " pentaKills, dragonKills, firstBloodKill, trueDamageDealtToChampions," +
                 " gameEndedInSurrender, wardsPlaced, visionScore, goldEarned," +
-                " neutralMinionsKilled, leaguePoints, rank, summonerName) VALUES " +
-                "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                " neutralMinionsKilled, leaguePoints, rank, summonerName, gameDay, tier) VALUES " +
+                "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try(PreparedStatement statement = connection.prepareStatement(sql)){
             statement.setLong(1,participantInfo.getGameDuration());
@@ -68,6 +71,8 @@ public class Connection {
             statement.setInt(22,participantInfo.getLeaguePoints());
             statement.setString(23, participantInfo.getRank());
             statement.setString(24, participantInfo.getSummonerName());
+            statement.setDate(25, Date.valueOf(LocalDate.ofInstant(participantInfo.getGameDay(), ZoneId.systemDefault())));
+            statement.setString(26, participantInfo.getTier());
             statement.executeUpdate();
             connection.commit();
 
