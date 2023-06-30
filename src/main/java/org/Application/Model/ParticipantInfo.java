@@ -4,6 +4,9 @@ import lombok.*;
 import org.Application.DTO.MatchDTO;
 import org.Application.DTO.ParticipantDTO;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +17,7 @@ import java.util.List;
 @ToString
 public class ParticipantInfo {
     private Long gameDuration;
+    private Instant gameDay;
     private Integer summonerLevel;
     private Integer kills;
     private Integer assists;
@@ -51,6 +55,7 @@ public class ParticipantInfo {
                 var participant = new ParticipantInfo();
 
                 participant.setGameDuration(info.gameDuration());
+                participant.setGameDay(Instant.ofEpochMilli(info.gameCreation()));
                 participant.setSummonerLevel(participantDTO.summonerLevel());
                 participant.setKills(participantDTO.kills());
                 participant.setAssists(participantDTO.assists());
