@@ -56,7 +56,6 @@ public class Application {
 							if (playerIsInMatch(entries, participant) && matchIsRankedSoloDuo(entries)){
 								setEntriesCampsInParticipant(participant, entries);
 								System.out.println(LocalDateTime.now().toString() +" - "+cont+" salvo(s) no banco");
-								System.out.println(participant);
 								ConnectionDB.saveParticipantInfo(participant);
 								cont.getAndSet(cont.get() + 1);
 							}
