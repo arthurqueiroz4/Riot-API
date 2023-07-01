@@ -1,6 +1,6 @@
 # Riot API
 - Projeto feito utilizando a <a href='https://developer.riotgames.com/apis'>API da Riot Games</a>. Fiz as requisições, tratei os dados e salvei no banco com Java.
-- Consiste em pegar uma lista de Invocadores (player de LoL) e retornar dados que eu achei relevante das últimas 100 partidas daqueles que foram passados. Esses dados são salvos em um banco PostgreSQL.
+- Consiste em pegar uma lista de Invocadores (player de LoL) e retornar dados que eu achei relevante das últimas 100 partidas na fila SOLO/DUO daqueles que foram passados. Esses dados são salvos em um banco PostgreSQL.
 ## Como usar:
 - Use o Java 19.
 - Baixe as dependências do Maven.
